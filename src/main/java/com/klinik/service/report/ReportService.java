@@ -87,9 +87,9 @@ public class ReportService {
                     try( ResultSet rs = ps.executeQuery() ){
                         while ( rs.next() ){
                             ReportDrug drug = new ReportDrug();
-                            drug.setName_drug_treatment( rs.getString(1));
-                            drug.setCount_drug_treatment( rs.getLong(2));
-                            drug.setCount_patient( rs.getLong(3));
+                            drug.setNameDrugTreatment( rs.getString(1));
+                            drug.setCountDrugTreatment( rs.getLong(2));
+                            drug.setCountPatient( rs.getLong(3));
                             response.add( drug );
                         }
                     }
@@ -143,10 +143,10 @@ public class ReportService {
                             patient.setSurname( rs.getString(5));
                             patient.setName( rs.getString(6));
                             patient.setFullName( rs.getString(7));
-                            patient.setGender( rs.getInt(8) == 0 ? Gender.Man : Gender.Woman );
+                            patient.setGender( rs.getInt(8) == 0 ? Gender.MAN : Gender.WOMAN );
                             patient.setPhone( rs.getString(9));
                             patient.setAddress( rs.getString(10));
-                            response.setCount_treatment( rs.getInt( 11 ));
+                            response.setCountTreatment( rs.getInt( 11 ));
                             card.setPatient( patient );
                             List<TypeComplaint> complaints  = new ArrayList();
                                 try ( PreparedStatement st3 = conn.prepareStatement( sql3 )){
@@ -231,7 +231,7 @@ public class ReportService {
                             patient.setSurname( rs.getString( 1 ));
                             patient.setName( rs.getString( 2 ));
                             patient.setFullName( rs.getString( 3 ));
-                            patient.setGender( rs.getInt( 4 ) == 0 ? Gender.Man : Gender.Woman );
+                            patient.setGender( rs.getInt( 4 ) == 0 ? Gender.MAN : Gender.WOMAN );
                             patient.setPhone( rs.getString( 5 ));
                             patient.setAddress( rs.getString( 6 ));
                             card.setDiagnosis( rs.getString( 7 ));
@@ -273,7 +273,7 @@ public class ReportService {
                                     } 
                             card.setTypeComplaint( listTypeComplaint );
                             report.setCard( card );
-                            report.setCount_record_for_time( rs.getLong( 11 ));
+                            report.setCountRecordForTime( rs.getLong( 11 ));
                             report.setListRecordPatient( list );
                         }
                     }
